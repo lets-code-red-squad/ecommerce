@@ -1,10 +1,10 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function DefalutTemplate({ children, title }) {
+export default function DefalutTemplate({ children }) {
   return (
     <>
-      <Header title={title}  />
+      <Header />
 
       <main>{children}</main>
 

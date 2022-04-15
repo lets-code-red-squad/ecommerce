@@ -1,28 +1,25 @@
 import { Link } from "react-router-dom";
-import { useProdutos } from '../../contexts/Products'
 
-export const BtnSave = ({ handlerSubmit }) => {
+export const BtnSave = ({ handlerSubmit, disabled }) => {
   return (
-    <Link to='/'><button type="submit" className="buttons" onClick={handlerSubmit}>Salvar</button></Link>
+    <Link to='/'><button type="submit" className="buttons" onClick={handlerSubmit} disabled={disabled} >Salvar</button></Link>
   )
 }
 
 export const BtnEdit = () => {
   return (
-    <Link to='/'><button>Editar</button></Link>
+    <Link to='/'><button onClick={(() => console.log('Eu ainda não estou funcionando :c'))}>Editar</button></Link>
   );
 };
 
-export const BtnDelete = ({ id }) => {
-  const [ produts ]= useProdutos();
-  
+export const BtnDelete = ({ id, products }) => {
   return (
     <button
-    onClick={ (event) => {
+      onClick={(event) => {
         const element = event.target.parentElement;
         element.parentElement.removeChild(element);
-        produts.splice(id, 1);
-      } }
+        products.splice(id, 1);
+      }}
     >
       Excluir
     </button>

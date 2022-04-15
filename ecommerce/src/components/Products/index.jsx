@@ -1,18 +1,16 @@
 import ProductCard from "./ProductCard";
-import { useProdutos } from "../../contexts/Products";
 
-export default function ProdutoEdit() {
-  const [produtos] = useProdutos();
-
+export default function ProductList({ products }) {
   return (
     <div className="products-container flex">
-      {produtos.map((element, index) => (
+      {products.map((element, index) => (
         <ProductCard
           title={element.title}
           price={element.price}
           info={element.info}
-          weigth={element.weight}
+          weight={element.weight}
           id={index}
+          products={products}
           key={index}
         />
       ))}

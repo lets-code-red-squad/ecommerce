@@ -1,24 +1,33 @@
 import { Input } from "../Input/";
-import { onSubmit, BtnCancel, BtnSave } from "../Buttons";
-import { useState } from "react";
+import { BtnCancel, BtnSave } from "../Buttons";
+import { useState, useEffect } from "react";
 import { useProdutos } from "../../contexts/Products";
 
 export default function Cadastro() {
-  const [ title, setTitle ] = useState();
-  const [ price, setPrice ] = useState();
-  const [ info, setInfo ] = useState();
-  const [ weight, setWeight ] = useState();
-  const [ products, setProducts ] = useProdutos();
+  const [title = '', setTitle] = useState();
+  const [price = '0', setPrice] = useState();
+  const [info = '', setInfo] = useState();
+  const [weight = '0', setWeight] = useState();
+  const [buttonDisabled = true, setButtonDisabled] = useState();
+  const [products, setProducts] = useProdutos();
+
+  useEffect(() => {
+    const minCharacter = 5;
+
+    const errors = [
+      title.length < minCharacter,
+      info.length < minCharacter,
+      price < 0,
+      weight < 0,
+    ];
+
+    setButtonDisabled(() => errors.some((error) => error));
+  }, [title, info, price, weight]);
+
 
   const handlerSubmit = (event) => {
-    event.preventDefault()
-    
-    setProducts([...products, {
-      title,
-      price,
-      info,
-      weight,
-    }])
+    event.preventDefault();
+    setProducts([{ title, price, info, weight }, ...products]);
   }
 
   return (
@@ -26,7 +35,6 @@ export default function Cadastro() {
       <div className="cadastro-inputs flex">
         <div>
           <Input
-            name='title'
             label="Título"
             type="text"
             id="input-title"
@@ -34,7 +42,6 @@ export default function Cadastro() {
             func={setTitle}
           />
           <Input
-            name="price"
             label="Preço"
             type="number"
             id="input-price"
@@ -42,7 +49,6 @@ export default function Cadastro() {
             func={setPrice}
           />
           <Input
-            name="info"
             label="Informações/Descrição"
             type="text"
             id="input-info"
@@ -50,7 +56,6 @@ export default function Cadastro() {
             func={setInfo}
           />
           <Input
-            name="weight"
             label="Peso"
             type="number"
             id="input-weigth"
@@ -58,11 +63,14 @@ export default function Cadastro() {
             func={setWeight}
           />
         </div>
-        <img src="https://via.placeholder.com/350" alt="example" />
+
+        <div>
+          <img src="https://via.placeholder.com/350" alt="example" />
+        </div>
       </div>
 
       <div>
-        <BtnSave handlerSubmit={handlerSubmit} />
+        <BtnSave handlerSubmit={handlerSubmit} disabled={buttonDisabled} />
         <BtnCancel />
       </div>
     </form>
