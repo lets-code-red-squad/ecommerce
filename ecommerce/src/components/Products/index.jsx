@@ -21,7 +21,7 @@ function ProductCard({ title, price, info, weight, image, id, products }) {
 export default function ProductList({ products }) {
   return (
     <div className="products flex">
-      <div className="products-container grid ">
+      <div className="products-container flex ">
         {products.map(({ title, price, info, weight, image }, index) => (
           <ProductCard
             title={title}
