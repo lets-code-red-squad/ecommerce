@@ -17,11 +17,12 @@ export default function Cadastro() {
 
   useEffect(() => {
     const minCharacter = 5;
+    const maxCharacter = 25;
 
     const errors = [
-      title.length < minCharacter,
+      title.length < minCharacter || title.length > maxCharacter,
       info.length < minCharacter,
-      image.length === 0,
+      image.length === 0 ,
       price < 0,
       weight < 0,
     ];
