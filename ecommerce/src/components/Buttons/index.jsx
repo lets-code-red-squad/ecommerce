@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
 import { useProdutos } from '../../contexts/Products'
 
-export const onSubmit = (event) => {
-  event.preventDefault(); //  evitando que, ao clicar no botão, ele recarregue a página
-  console.log("onSubmit");
-  return <></>;
-};
-
-export const BtnSave = () => {
+export const BtnSave = ({ handlerSubmit }) => {
   return (
-    <Link to='/'><button className="buttons">Salvar</button></Link>
+    <Link to='/'><button type="submit" className="buttons" onClick={handlerSubmit}>Salvar</button></Link>
   )
 }
 
 export const BtnEdit = () => {
-  console.log("BtnEdit");
+  return (
+    <Link to='/'><button>Editar</button></Link>
+  );
 };
 
 export const BtnDelete = ({ id }) => {
@@ -22,11 +18,11 @@ export const BtnDelete = ({ id }) => {
   
   return (
     <button
-    onClick={(event) => {
+    onClick={ (event) => {
         const element = event.target.parentElement;
         element.parentElement.removeChild(element);
         produts.splice(id, 1);
-      }}
+      } }
     >
       Excluir
     </button>

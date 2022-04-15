@@ -4,10 +4,10 @@ import data from "./data";
 const ProductContext = createContext();
 
 export default function ProdutProvider({ children }) {
-  const [produts, setProduct] = useState(data);
+  const [products, setProduct] = useState(data);
 
   return (
-    <ProductContext.Provider value={{ produts, setProduct }}>
+    <ProductContext.Provider value={{ products, setProduct }}>
       {children}
     </ProductContext.Provider>
   );
@@ -15,7 +15,7 @@ export default function ProdutProvider({ children }) {
 
 export const useProdutos = () => {
   const context = useContext(ProductContext);
-  const { produts, setProduct } = context;
+  const { products, setProduct } = context;
 
-  return [produts, setProduct];
+  return [products, setProduct];
 };

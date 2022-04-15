@@ -1,4 +1,4 @@
-export function Input({ name, label, type, id, tag, func, value }) {
+export function Input({ name, label, type, id, tag, func }) {
   return (
     <div className="input-cards">
       <label htmlFor={id} className="flex cards">
@@ -9,14 +9,14 @@ export function Input({ name, label, type, id, tag, func, value }) {
             name={name}
             type={type}
             id={id}
-            onChange={(event) => console.log(event.target)}
+            onChange={(event) => func(event.target.value)}
           />
         ) : (
           <input
             name={name}
             type={type}
             id={id}
-            onChange={(event) => console.log(event.target.value)}
+            onChange={(event) => func(event.target.value)}
           />
         )}
       </label>

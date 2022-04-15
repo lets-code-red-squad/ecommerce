@@ -10,17 +10,7 @@ export default function AppRoutes() {
         <Routes>
           <Route
             path="/cadastro"
-            element={
-              <Cadastro
-                title="Teste"
-                price="Teste"
-                info="Aaaa"
-                weight="BBbbb"
-                saveButtonDisabled={false}
-                handleChange={console.log("alô")}
-                saveButton={console.log("teste")}
-              />
-            }
+            element={ <Cadastro /> }
           />
           <Route path="/" element={<App />} />
         </Routes>

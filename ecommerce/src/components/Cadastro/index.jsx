@@ -1,17 +1,37 @@
 import { Input } from "../Input/";
 import { onSubmit, BtnCancel, BtnSave } from "../Buttons";
+import { useState } from "react";
+import { useProdutos } from "../../contexts/Products";
 
 export default function Cadastro() {
+  const [ title, setTitle ] = useState();
+  const [ price, setPrice ] = useState();
+  const [ info, setInfo ] = useState();
+  const [ weight, setWeight ] = useState();
+  const [ products, setProducts ] = useProdutos();
+
+  const handlerSubmit = (event) => {
+    event.preventDefault()
+    
+    setProducts([...products, {
+      title,
+      price,
+      info,
+      weight,
+    }])
+  }
+
   return (
-    <form className="cadastro-container flex" onSubmit={onSubmit}>
+    <form className="cadastro-container flex">
       <div className="cadastro-inputs flex">
         <div>
           <Input
-            name="title"
+            name='title'
             label="Título"
             type="text"
             id="input-title"
             tag="input"
+            func={setTitle}
           />
           <Input
             name="price"
@@ -19,6 +39,7 @@ export default function Cadastro() {
             type="number"
             id="input-price"
             tag="input"
+            func={setPrice}
           />
           <Input
             name="info"
@@ -26,6 +47,7 @@ export default function Cadastro() {
             type="text"
             id="input-info"
             tag="textarea"
+            func={setInfo}
           />
           <Input
             name="weight"
@@ -33,13 +55,14 @@ export default function Cadastro() {
             type="number"
             id="input-weigth"
             tag="input"
+            func={setWeight}
           />
         </div>
         <img src="https://via.placeholder.com/350" alt="example" />
       </div>
 
       <div>
-        <BtnSave />
+        <BtnSave handlerSubmit={handlerSubmit} />
         <BtnCancel />
       </div>
     </form>
