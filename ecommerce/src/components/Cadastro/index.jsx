@@ -29,7 +29,8 @@ export default function Cadastro() {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-    setProducts([{ title, price, info, weight }, ...products]);
+    setProducts([{ title, price, info, weight, image: URL.createObjectURL(image) }, ...products]);
+    console.log(products);
   }
 
   return (
@@ -75,6 +76,7 @@ export default function Cadastro() {
           {
             image ? <img src={URL.createObjectURL(image)} alt='Imagem' /> : <img src={endImage} alt='Imagem' />
           }
+          {}
           <Input
             name='image'
             label="Selecione uma imagem"
