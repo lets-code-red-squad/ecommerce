@@ -2,22 +2,34 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const BtnSave = ({ disabled, id }) => {
   return (
-      <button type="submit" className="buttons" disabled={disabled} form={id}>Salvar</button>
+    <button
+      type="submit"
+      className="buttons"
+      disabled={disabled}
+      form={id}
+    >
+      Salvar
+    </button>
   )
 }
 
 export const BtnSearch = ({ search }) => {
   return (
-    <button className="buttons" onClick={() => console.log(search)}>Pesquisar</button>
+    <button
+      className="buttons"
+      onClick={() => console.log(search)}
+    >
+      Pesquisar
+    </button>
   )
 }
 
-export const BtnEdit = () => {
-  const navigate = useNavigate()
+export const BtnEdit = ({ id }) => {
+  const navigate = useNavigate();
   return (
     <button onClick={(() => {
-      console.log('não estou funcionando ainda :c')
-      navigate('../', { replace: true })})}>Editar</button>
+      navigate(`/edit-product/${id}`, { replace: true });
+    })}>Editar</button>
   );
 };
 

@@ -1,4 +1,4 @@
-export function Input({ name, label, type, id, tag, func }) {
+export function Input({ name, label, type, id, tag, func, value }) {
   return (
     <div className="input-cards">
       <label htmlFor={id} className="flex cards">
@@ -8,6 +8,7 @@ export function Input({ name, label, type, id, tag, func }) {
           (
             <textarea
               name={name}
+              value={value}
               type={type}
               id={id}
               onChange={({ target }) => func(target.value)}
@@ -19,9 +20,10 @@ export function Input({ name, label, type, id, tag, func }) {
               type={type}
               id={id}
               onChange={({ target }) => func(target.files[0])}
-            /> :
-            <input
+              /> :
+              <input
               name={name}
+              value={value}
               type={type}
               id={id}
               onChange={({ target }) => func(target.value)}
