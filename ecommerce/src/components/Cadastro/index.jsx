@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useProdutos } from "../../contexts/Products";
 import { useNavigate } from "react-router-dom";
 
-export default function Cadastro({ title = '', price = 0, info = '', weight = 0, image = 'https://via.placeholder.com/350' }) {
+export default function Cadastro({ title = '', price = 0, info = '', weight = 0, image = 'https://via.placeholder.com/350', id = '' }) {
   const [getTitle, setTitle] = useState(title);
   const [getPrice, setPrice] = useState(price);
   const [getInfo, setInfo] = useState(info);
@@ -32,13 +32,19 @@ export default function Cadastro({ title = '', price = 0, info = '', weight = 0,
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setProducts([{
+
+    const productObj = {
       title: getTitle,
       price: getPrice,
       info: getInfo,
-      weigth: getWeight,
+      weight: getWeight,
       image: getImage !== image ? URL.createObjectURL(getImage) : image
-    }, ...products]);
+    };
+
+    id === ''
+      ? setProducts([productObj, ...products])
+      : products.splice(id, 1, productObj);
+        
     navigate('../', { replace: true });
   }
 

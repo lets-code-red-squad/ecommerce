@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProdutos } from "../../contexts/Products";
 import { BtnDelete, BtnEdit } from "../Buttons";
 import Cadastro from "../Cadastro";
-import { Input } from "../Input";
+// import { Input } from "../Input";
 // import { Input } from "../Input";
 
 export function ProductCard({ title, price, info, weight, image, id, products }) {
@@ -36,6 +36,7 @@ export const ProductEdit = () => {
       info={info}
       weight={weight}
       image={image}
+      id={id}
     />
   )
 }
