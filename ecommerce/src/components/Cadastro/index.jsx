@@ -3,8 +3,16 @@ import { BtnCancel, BtnSave } from "../Buttons";
 import { useState, useEffect } from "react";
 import { useProdutos } from "../../contexts/Products";
 import { useNavigate } from "react-router-dom";
+import './style.css';
 
-export default function Cadastro({ title = '', price = 0, info = '', weight = 0, image = 'https://via.placeholder.com/350', id = '' }) {
+export default function Cadastro({
+  title = '',
+  price = 0,
+  info = '',
+  weight = 0,
+  image = 'https://via.placeholder.com/350',
+  id = ''
+}) {
   const [getTitle, setTitle] = useState(title);
   const [getPrice, setPrice] = useState(price);
   const [getInfo, setInfo] = useState(info);
@@ -44,7 +52,7 @@ export default function Cadastro({ title = '', price = 0, info = '', weight = 0,
     id === ''
       ? setProducts([productObj, ...products])
       : products.splice(id, 1, productObj);
-        
+
     navigate('../', { replace: true });
   }
 
@@ -88,11 +96,11 @@ export default function Cadastro({ title = '', price = 0, info = '', weight = 0,
         </div>
 
         <div className="image-container">
-
           {
-            getImage !== image ? <img src={URL.createObjectURL(getImage)} alt='Imagem' /> : <img src={image} alt='Imagem' />
+            getImage !== image
+              ? <img src={URL.createObjectURL(getImage)} alt='Imagem' />
+              : <img src={image} alt='Imagem' />
           }
-          { }
           <Input
             name='image'
             label="Selecione uma imagem"
@@ -104,7 +112,7 @@ export default function Cadastro({ title = '', price = 0, info = '', weight = 0,
       </div>
 
       <div>
-        <BtnSave disabled={buttonDisabled} id='cadastro-form' />
+        <BtnSave disabled={buttonDisabled} />
         <BtnCancel />
       </div>
     </form>

@@ -1,10 +1,9 @@
-// import { useState } from "react";
+import Cadastro from "../Cadastro";
 import { useParams } from "react-router-dom";
 import { useProdutos } from "../../contexts/Products";
 import { BtnDelete, BtnEdit } from "../Buttons";
-import Cadastro from "../Cadastro";
-// import { Input } from "../Input";
-// import { Input } from "../Input";
+import './ProductCard.css';
+import './ProductList.css';
 
 export function ProductCard({ title, price, info, weight, image, id, products }) {
   return (

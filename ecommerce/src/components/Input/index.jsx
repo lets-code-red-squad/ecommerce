@@ -1,3 +1,5 @@
+import './style.css';
+
 export function Input({ name, label, type, id, tag, func, value }) {
   return (
     <div className="input-cards">

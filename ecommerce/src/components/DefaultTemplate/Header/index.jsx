@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { BtnSearch } from "../Buttons";
-import { Input } from "../Input";
-import logo from './logo.png'
+import { BtnSearch } from "../../Buttons";
+import { Input } from "../../Input";
+import './style.css';
+import logo from './logo.png';
 
 export default function Header() {
   const [search, setSearch] = useState();

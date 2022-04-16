@@ -1,0 +1,23 @@
+.input-cards {
+  width: 500px;
+}
+
+.image-container {
+  padding-left: 20px;
+}
+
+.cards {
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cards input {
+  padding: 5px;
+}
+
+.cards textarea {
+  font-family: sans-serif;
+  padding: 5px;
+  height: 100px;
+  resize: none;
+}

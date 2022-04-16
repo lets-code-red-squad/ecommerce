@@ -1,0 +1,11 @@
+.products-container {
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.products {
+  justify-content: center;
+  height: 82vh;
+}

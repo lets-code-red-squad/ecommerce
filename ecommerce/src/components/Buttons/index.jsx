@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import './style.css';
 
 export const BtnSave = ({ disabled, id }) => {
   return (
