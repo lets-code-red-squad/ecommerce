@@ -18,20 +18,35 @@ export function ProductCard({ title, price, info, weight, image, id, products })
   }));
 
   return (
-    <div className="flex product-card" id={id}>
-      <div className="product-info flex">
-        <h2 className="title">{title}</h2>
-        <img src={image} alt={title} />
-        <p className="info">{info}</p>
-        <p>{`Peso: ${weightFormated}`}</p>
-        <p className="price">{priceFormated}</p>
-      </div>
-      <div className="flex buttons-card">
-        <BtnEdit id={id} title={title} />
-        <BtnDelete id={id} products={products} />
+    <div className="product-card-container flex">
+      <div className="product-card flex" id={id} onClick={() => console.log(`item ${id} vizualizado!`)} >
+        <div className="product-info flex">
+          <div className="image-container">
+            <img src={image} alt={title} className="image" />
+          </div>
+          <div className="title-container flex">
+            <h2 className="title">{title}</h2>
+          </div>
+        </div>
+        <div className="flex buttons-card">
+          <BtnEdit id={id} title={title} />
+          <BtnDelete id={id} products={products} />
+        </div>
       </div>
     </div>
   );
+}
+
+export const ProductView = () => {
+  const [products] = useProdutos()
+  const { id } = useParams();
+  const { title, price, info, weight, image } = products.find((element) => element.id === id);
+
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  )
 }
 
 export const ProductEdit = () => {
@@ -52,15 +67,17 @@ export const ProductEdit = () => {
 }
 
 export const ProductSearch = () => {
-  const [ products ] = useProdutos();
+  const [products] = useProdutos();
   const { search } = useParams();
-  const allWordsSearch = search === undefined ? '' : search.split(' ');
-  const productsFiltred = products.filter((element) => allWordsSearch.some((word) => element.title.toLowerCase().split(' ').includes(word)));
+  const allWordsSearch = search.split(' ').toLowerCase();
+  const productsFiltred = products.filter((element) => allWordsSearch.some((word) =>
+    element.title.toLowerCase().split(' ').includes(word))
+  );
 
   return productsFiltred.length === 0
     ? (
       <div className="undefined flex">
-        <p>Nenhum resultado para <strong>{ search }</strong>...</p>
+        <p>Nenhum resultado para <strong>{search}</strong>...</p>
         <p>Verifique sua pesquisa e tente novamente.</p>
       </div>
     )

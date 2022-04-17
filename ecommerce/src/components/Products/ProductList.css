@@ -1,6 +1,6 @@
 .products-container {
   justify-content: center;
-  align-items: baseline;
+  /* align-items: baseline; */
   flex-wrap: wrap;
   padding-top: 20px;
 }

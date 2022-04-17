@@ -51,7 +51,7 @@ export const BtnDelete = ({ id, products }) => {
     <button
       className="btn-delete"
       onClick={(event) => {
-        const element = event.target.parentElement.parentElement;
+        const element = event.target.parentElement.parentElement.parentElement;
         element.parentElement.removeChild(element);
         products.splice(id, 1);
       }}

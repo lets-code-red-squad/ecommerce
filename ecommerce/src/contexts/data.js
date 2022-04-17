@@ -22,7 +22,7 @@ const data = [
   },
   {
     image: '  https://images.kabum.com.br/produtos/fotos/266992/ifood-digital-g-brazil-_1636597587_gg.jpg',
-    title: 'Gift Card iFood-R$50,00',
+    title: 'Gift Card iFood-R$50,00 AAA BBB CCC DDD EEE FFF GGG HHH III',
     price: 45,
     info: 'O iFood Card é um cartão presente que dá a liberdade do comprador ou presenteado escolher as delícias que mais gosta no nosso aplicativo',
     weight: 0,
