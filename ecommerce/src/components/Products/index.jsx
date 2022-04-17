@@ -35,7 +35,7 @@ export function ProductCard({ title, price, info, weight, image, id, products })
 }
 
 export const ProductEdit = () => {
-  const [ products ] = useProdutos()
+  const [products] = useProdutos()
   const { id } = useParams();
   const { title, price, info, weight, image } = products.find((element) => element.id === id);
 
@@ -51,24 +51,43 @@ export const ProductEdit = () => {
   );
 }
 
+export const ProductSearch = () => {
+  const [ products ] = useProdutos();
+  const { search } = useParams();
+  const allWordsSearch = search === undefined ? '' : search.split(' ');
+  const productsFiltred = products.filter((element) => allWordsSearch.some((word) => element.title.toLowerCase().split(' ').includes(word)));
+
+  return productsFiltred.length === 0
+    ? (
+      <div className="undefined flex">
+        <p>Nenhum resultado para <strong>{ search }</strong>...</p>
+        <p>Verifique sua pesquisa e tente novamente.</p>
+      </div>
+    )
+    : (
+      < ProductList products={productsFiltred} />
+    )
+}
+
 export default function ProductList({ products }) {
   return (
     <div className="products flex">
       <div className="products-container flex">
         {products.map(({ title, price, info, weight, image, id }, index) => {
-        
-        return (
-          <ProductCard
-            title={title}
-            price={price}
-            info={info}
-            weight={weight}
-            image={image}
-            id={id}
-            products={products}
-            key={index}
-          />
-        )})}
+
+          return (
+            <ProductCard
+              title={title}
+              price={price}
+              info={info}
+              weight={weight}
+              image={image}
+              id={id}
+              products={products}
+              key={index}
+            />
+          )
+        })}
       </div>
     </div>
   );

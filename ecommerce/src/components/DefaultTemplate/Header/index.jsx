@@ -11,6 +11,10 @@ export default function Header() {
   return (
     <header className="flex">
       <Link to="/"><img className="image-logo" src={logo} alt="" /></Link>
+      <div className="nav-bar-header flex">
+        <Link className="link-header" to="/">Página Inicial</Link>
+        <Link className="link-header" to="/cadastro">Cadastro</Link>
+      </div>
       <div className="search-container flex">
         <Input
           name='search'
@@ -18,11 +22,6 @@ export default function Header() {
           func={setSearch}
         />
         <BtnSearch search={search} />
-      </div>
-      <div className="nav-bar-header flex">
-
-        <Link className="link-header" to="/">Página Inicial</Link>
-        <Link className="link-header" to="/cadastro">Cadastro</Link>
       </div>
     </header>
   );

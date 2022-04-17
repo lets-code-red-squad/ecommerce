@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useProdutos } from "../../contexts/Products";
+import ProductList, { ProductSearch } from "../Products";
 import './style.css';
 
 export const BtnSave = ({ disabled, id }) => {
@@ -15,10 +17,20 @@ export const BtnSave = ({ disabled, id }) => {
 }
 
 export const BtnSearch = ({ search }) => {
+  const navigate = useNavigate();
+  const [products] = useProdutos();
+
   return (
     <button
       className="buttons"
-      onClick={() => console.log(search)}
+      onClick={() => {
+        if (search === '') {
+          navigate('/', { replace: true });
+          return <ProductList products={products} />;
+        }
+
+        navigate(`/search/${search}`, { replace: true });
+      }}
     >
       Pesquisar
     </button>
