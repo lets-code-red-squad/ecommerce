@@ -1,8 +1,8 @@
 import './style.css';
 
-export function Input({ name, label, type, id, tag, func, value }) {
+export function Input({ name, label, type, id, tag, func, value, className }) {
   return (
-    <div className="input-cards">
+    <div className={className}>
       <label htmlFor={id} className="flex cards">
         {label}
 

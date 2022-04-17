@@ -70,6 +70,7 @@ export default function Cadastro({
             id="input-title"
             value={getTitle}
             func={setTitle}
+            className='input-cadastro'
           />
           <Input
             name='price'
@@ -78,6 +79,7 @@ export default function Cadastro({
             id="input-price"
             value={getPrice}
             func={setPrice}
+            className='input-cadastro'
           />
           <Input
             name='info'
@@ -87,6 +89,7 @@ export default function Cadastro({
             tag="textarea"
             value={getInfo}
             func={setInfo}
+            className='input-cadastro'
           />
           <Input
             name='weight'
@@ -95,6 +98,7 @@ export default function Cadastro({
             id="input-weigth"
             value={getWeight}
             func={setWeight}
+            className='input-cadastro'
           />
         </div>
 
@@ -110,6 +114,7 @@ export default function Cadastro({
             type="file"
             id="input-image"
             func={setImage}
+            className='input-cadastro'
           />
         </div>
       </div>

@@ -65,7 +65,7 @@ export const ProductSearch = () => {
       </div>
     )
     : (
-      < ProductList products={productsFiltred} />
+      <ProductList products={productsFiltred} />
     )
 }
 

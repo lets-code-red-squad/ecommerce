@@ -32,3 +32,21 @@
   background-color: rgb(180, 23, 17);
   color: white;
 }
+
+.btn-search {
+  text-transform: uppercase;
+  font-size: 11px;
+  height: 30px;
+  padding: 0 15px;
+  color: white;
+  background-color: rgb(126, 6, 6);
+  border: 2px inset rgb(153, 6, 6);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-search:hover {
+  background-color: rgb(119, 0, 0);
+  border-color: rgb(134, 3, 3);
+
+}

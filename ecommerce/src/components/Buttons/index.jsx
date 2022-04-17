@@ -22,9 +22,9 @@ export const BtnSearch = ({ search }) => {
 
   return (
     <button
-      className="buttons"
+      className="btn-search"
       onClick={() => {
-        if (search === '') {
+        if (search === '' || search === undefined) {
           navigate('/', { replace: true });
           return <ProductList products={products} />;
         }
