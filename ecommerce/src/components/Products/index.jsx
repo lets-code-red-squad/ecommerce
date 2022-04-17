@@ -6,14 +6,26 @@ import './ProductCard.css';
 import './ProductList.css';
 
 export function ProductCard({ title, price, info, weight, image, id, products }) {
+  const priceFormated = (Number(price)).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'BRL'
+  })
+
+  const weightFormated = (Number(weight).toLocaleString('pt-BR', {
+    style: 'unit',
+    unit: 'kilogram',
+
+  }))
+
   return (
     <div className="flex product-card" id={id}>
       <div className="product-info flex">
         <h2 className="title">{title}</h2>
         <img src={image} alt={title} />
         <p className="info">{info}</p>
-        <p>{`Peso: ${weight}kg`}</p>
-        <p className="price">{`R$${price}`}</p>
+        <p>{`Peso: ${weightFormated}`}</p>
+        <p className="price">{priceFormated}</p>
       </div>
       <div className="flex buttons-card">
         <BtnEdit id={id} title={title} />
