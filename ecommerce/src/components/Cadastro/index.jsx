@@ -29,7 +29,7 @@ export default function Cadastro({
     const errors = [
       getTitle.length < minCharacter || getTitle.length > maxCharacter,
       getInfo.length < minCharacter,
-      getImage.length === 0,
+      getImage === 'https://via.placeholder.com/350',
       getPrice < 0,
       getWeight < 0,
     ];

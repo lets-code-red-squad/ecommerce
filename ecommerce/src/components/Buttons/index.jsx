@@ -28,7 +28,7 @@ export const BtnSearch = ({ search }) => {
 export const BtnEdit = ({ id }) => {
   const navigate = useNavigate();
   return (
-    <button onClick={(() => {
+    <button className="btn-edit" onClick={(() => {
       navigate(`/edit-product/${id}`, { replace: true });
     })}>Editar</button>
   );
@@ -37,6 +37,7 @@ export const BtnEdit = ({ id }) => {
 export const BtnDelete = ({ id, products }) => {
   return (
     <button
+      className="btn-delete"
       onClick={(event) => {
         const element = event.target.parentElement.parentElement;
         element.parentElement.removeChild(element);

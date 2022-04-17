@@ -10,13 +10,12 @@ export function ProductCard({ title, price, info, weight, image, id, products })
     minimumFractionDigits: 2,
     style: 'currency',
     currency: 'BRL'
-  })
+  });
 
   const weightFormated = (Number(weight).toLocaleString('pt-BR', {
     style: 'unit',
     unit: 'kilogram',
-
-  }))
+  }));
 
   return (
     <div className="flex product-card" id={id}>
@@ -49,7 +48,7 @@ export const ProductEdit = () => {
       image={image}
       id={id}
     />
-  )
+  );
 }
 
 export default function ProductList({ products }) {
