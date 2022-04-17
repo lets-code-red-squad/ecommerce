@@ -35,19 +35,21 @@ export default function Cadastro({
     ];
 
     setButtonDisabled(() => errors.some((error) => error));
-  }, [getTitle, getInfo, getPrice, getWeight, getImage]);
+  }, [getTitle, getInfo, getPrice, getWeight, getImage, products]);
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const productObj = {
-      id: getTitle.toLowerCase().split(' ').join('-'),
+      id: products.some((element) => element.title === getTitle)
+        ? `${getTitle.toLowerCase().split(' ').join('-')}-${Math.floor(Math.random() * 1000)}`
+        : getTitle.toLowerCase().split(' ').join('-'),
       title: getTitle,
       price: getPrice,
       info: getInfo,
       weight: getWeight,
-      image: getImage !== image ? URL.createObjectURL(getImage) : image
+      image: getImage !== image ? URL.createObjectURL(getImage) : image,
     };
 
     products.some((element) => element.id === id)
