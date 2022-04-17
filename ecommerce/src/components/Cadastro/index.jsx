@@ -42,6 +42,7 @@ export default function Cadastro({
     event.preventDefault();
 
     const productObj = {
+      id: getTitle.toLowerCase().split(' ').join('-'),
       title: getTitle,
       price: getPrice,
       info: getInfo,
@@ -49,9 +50,9 @@ export default function Cadastro({
       image: getImage !== image ? URL.createObjectURL(getImage) : image
     };
 
-    id === ''
-      ? setProducts([productObj, ...products])
-      : products.splice(id, 1, productObj);
+    products.some((element) => element.id === id)
+      ? products.splice(products.findIndex((element) => element.id === id), 1, productObj)
+      : setProducts([productObj, ...products]);
 
     navigate('../', { replace: true });
   }

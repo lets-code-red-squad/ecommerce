@@ -37,7 +37,7 @@ export function ProductCard({ title, price, info, weight, image, id, products })
 export const ProductEdit = () => {
   const [ products ] = useProdutos()
   const { id } = useParams();
-  const { title, price, info, weight, image } = products[id];
+  const { title, price, info, weight, image } = products.find((element) => element.id === id);
 
   return (
     <Cadastro
@@ -55,18 +55,20 @@ export default function ProductList({ products }) {
   return (
     <div className="products flex">
       <div className="products-container flex">
-        {products.map(({ title, price, info, weight, image }, index) => (
+        {products.map(({ title, price, info, weight, image, id }, index) => {
+        
+        return (
           <ProductCard
             title={title}
             price={price}
             info={info}
             weight={weight}
             image={image}
-            id={index}
+            id={id}
             products={products}
             key={index}
           />
-        ))}
+        )})}
       </div>
     </div>
   );

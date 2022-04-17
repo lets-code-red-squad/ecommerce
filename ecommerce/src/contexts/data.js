@@ -37,4 +37,8 @@ const data = [
   
 ];
 
+data.forEach((element) => element['id'] = element.title.toLowerCase().split(' ').join('-'))
+
+console.log(data)
+
 export default data;
