@@ -6,7 +6,7 @@ import "./ProductCard.css";
 import "./ProductList.css";
 import "./ProductView.css";
 
-export function ProductCard({ title, image, id, products }) {
+export function ProductCard({ title, image, id, products,price }) {
   const navigate = useNavigate();
 
   return (
@@ -23,6 +23,8 @@ export function ProductCard({ title, image, id, products }) {
           </div>
           <div className="title-container flex">
             <h2 className="title">{title}</h2>
+            <br />
+            <h1 className="price">{price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h1>
           </div>
         </div>
         <div className="flex buttons-card">
