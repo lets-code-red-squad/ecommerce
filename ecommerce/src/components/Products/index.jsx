@@ -2,20 +2,22 @@ import Cadastro from "../Cadastro";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProdutos } from "../../contexts/Products";
 import { BtnCancel, BtnDelete, BtnEdit } from "../Buttons";
-import './ProductCard.css';
-import './ProductList.css';
-import './ProductView.css';
+import "./ProductCard.css";
+import "./ProductList.css";
+import "./ProductView.css";
 
 export function ProductCard({ title, image, id, products }) {
   const navigate = useNavigate();
 
-
   return (
     <div className="product-card-container flex">
-      <div className="product-card flex" id={id} >
-        <div className="product-info flex" onClick={() => {
-          navigate(`/view/${id}`, { replace: true });
-        }}>
+      <div className="product-card flex" id={id}>
+        <div
+          className="product-info flex"
+          onClick={() => {
+            navigate(`/view/${id}`, { replace: true });
+          }}
+        >
           <div className="image-card flex">
             <img src={image} alt={title} className="image" />
           </div>
@@ -33,20 +35,25 @@ export function ProductCard({ title, image, id, products }) {
 }
 
 export const ProductView = () => {
-  const [products] = useProdutos()
+  const [products] = useProdutos();
   const { id } = useParams();
-  const { title, price, info, weight, image } = products.find((element) => element.id === id);
+  console.log(products, id);
+  const { title, price, info, weight, image } = products.find(
+    (element) => element.id === id
+  );
 
-  const priceFormated = (Number(price)).toLocaleString('pt-BR', {
+  const priceFormated = Number(price).toLocaleString("pt-BR", {
     minimumFractionDigits: 2,
-    style: 'currency',
-    currency: 'BRL'
+    style: "currency",
+    currency: "BRL"
   });
 
-  const weightFormated = (Number(weight).toLocaleString('pt-BR', {
-    style: 'unit',
-    unit: 'kilogram',
-  }));
+  const weightFormated = Number(weight).toLocaleString("pt-BR", {
+    style: "unit",
+    unit: "kilogram"
+  });
+
+  console.log(info);
 
   return (
     <div className="product-view flex">
@@ -55,7 +62,7 @@ export const ProductView = () => {
       </div>
       <div className="flex">
         <div className="left-view">
-          <img src={image} alt={title} className='image-view' />
+          <img src={image} alt={title} className="image-view" />
         </div>
         <div className="right-view flex">
           <div>
@@ -64,7 +71,11 @@ export const ProductView = () => {
           </div>
           <div>
             <h3>Informações/Descrição:</h3>
-            <p className="info-view">{info}</p>
+            <div className="info-view">
+              {info.split("\n").map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
           </div>
           <div>
             <h3>Peso:</h3>
@@ -73,16 +84,18 @@ export const ProductView = () => {
         </div>
       </div>
       <div className="btn-back">
-        <BtnCancel name='Voltar' />
+        <BtnCancel name="Voltar" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const ProductEdit = () => {
-  const [products] = useProdutos()
+  const [products] = useProdutos();
   const { id } = useParams();
-  const { title, price, info, weight, image } = products.find((element) => element.id === id);
+  const { title, price, info, weight, image } = products.find(
+    (element) => element.id === id
+  );
 
   return (
     <Cadastro
@@ -94,34 +107,35 @@ export const ProductEdit = () => {
       id={id}
     />
   );
-}
+};
 
 export const ProductSearch = () => {
   const [products] = useProdutos();
   const { search } = useParams();
-  const allWordsSearch = search.toLowerCase().split(' ');
-  const productsFiltred = products.filter((element) => allWordsSearch.some((word) =>
-    element.title.toLowerCase().split(' ').includes(word))
+  const allWordsSearch = search.toLowerCase().split(" ");
+  const productsFiltred = products.filter((element) =>
+    allWordsSearch.some((word) =>
+      element.title.toLowerCase().split(" ").includes(word)
+    )
   );
 
-  return productsFiltred.length === 0
-    ? (
-      <div className="undefined flex">
-        <p>Nenhum resultado para <strong>{search}</strong>...</p>
-        <p>Verifique sua pesquisa e tente novamente.</p>
-      </div>
-    )
-    : (
-      <ProductList products={productsFiltred} />
-    )
-}
+  return productsFiltred.length === 0 ? (
+    <div className="undefined flex">
+      <p>
+        Nenhum resultado para <strong>{search}</strong>...
+      </p>
+      <p>Verifique sua pesquisa e tente novamente.</p>
+    </div>
+  ) : (
+    <ProductList products={productsFiltred} />
+  );
+};
 
 export default function ProductList({ products }) {
   return (
     <div className="products flex">
       <div className="products-container flex">
         {products.map(({ title, price, info, weight, image, id }, index) => {
-
           return (
             <ProductCard
               title={title}
@@ -133,7 +147,7 @@ export default function ProductList({ products }) {
               products={products}
               key={index}
             />
-          )
+          );
         })}
       </div>
     </div>
