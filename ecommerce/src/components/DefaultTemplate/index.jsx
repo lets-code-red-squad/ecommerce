@@ -7,8 +7,6 @@ export default function DefalutTemplate({ children }) {
       <Header />
 
       <main>{children}</main>
-
-      <Footer />
     </>
   );
 }

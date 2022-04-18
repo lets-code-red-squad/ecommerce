@@ -22,8 +22,8 @@ export function Input({ name, label, type, id, tag, func, value, className }) {
               type={type}
               id={id}
               onChange={({ target }) => func(target.files[0])}
-              /> :
-              <input
+            /> :
+            <input
               name={name}
               value={value}
               type={type}

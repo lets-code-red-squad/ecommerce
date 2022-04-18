@@ -2,11 +2,14 @@
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 20px;
+  max-width: 1280px;
+  padding-bottom: 20px;
+  background-color: #efefef;
+
 }
 
 .products {
   justify-content: center;
-  height: 82vh;
 }
 
 .undefined {

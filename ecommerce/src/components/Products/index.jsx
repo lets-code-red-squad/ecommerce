@@ -5,6 +5,7 @@ import { BtnCancel, BtnDelete, BtnEdit } from "../Buttons";
 import "./ProductCard.css";
 import "./ProductList.css";
 import "./ProductView.css";
+import Footer from "../DefaultTemplate/Footer";
 
 export function ProductCard({ title, image, id, products }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export function ProductCard({ title, image, id, products }) {
           <div className="image-card flex">
             <img src={image} alt={title} className="image" />
           </div>
-          <div className="title-container flex">
+          <div className="title-container-card flex">
             <h2 className="title">{title}</h2>
           </div>
         </div>
@@ -53,42 +54,44 @@ export const ProductView = () => {
     unit: "kilogram"
   });
 
-  console.log(info);
 
   return (
-    <div className="product-view flex">
-      <div className="product-view-container flex">
-        <div className="title-view">
-          <h1>{title}</h1>
-        </div>
-        <div className="flex">
-          <div className="left-view">
-            <img src={image} alt={title} className="image-view" />
+    <>
+      <div className="product-view flex">
+        <div className="product-view-container flex">
+          <div className="title-view">
+            <h1 className="title-container">{title}</h1>
           </div>
-          <div className="right-view flex">
-            <div>
-              <h3>Preço:</h3>
-              <p>{priceFormated}</p>
+          <div className="flex">
+            <div className="left-view">
+              <img src={image} alt={title} className="image-view" />
             </div>
-            <div>
-              <h3>Informações/Descrição:</h3>
-              <div className="info-view">
-                {info.split("\n").map((paragraph) => (
-                  <p>{paragraph}</p>
-                ))}
+            <div className="right-view flex">
+              <div>
+                <h3>Preço:</h3>
+                <p>{priceFormated}</p>
+              </div>
+              <div>
+                <h3>Informações/Descrição:</h3>
+                <div className="info-view">
+                  {info.split("\n").map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3>Peso:</h3>
+                <p>{weightFormated}</p>
               </div>
             </div>
-            <div>
-              <h3>Peso:</h3>
-              <p>{weightFormated}</p>
-            </div>
+          </div>
+          <div className="btn-back">
+            <BtnCancel name="Voltar" />
           </div>
         </div>
-        <div className="btn-back">
-          <BtnCancel name="Voltar" />
-        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -101,6 +104,7 @@ export const ProductEdit = () => {
 
   return (
     <Cadastro
+      titleContainer="Edição"
       title={title}
       price={price}
       info={info}
@@ -127,6 +131,7 @@ export const ProductSearch = () => {
         Nenhum resultado para <strong>{search}</strong>...
       </p>
       <p>Verifique sua pesquisa e tente novamente.</p>
+      <Footer />
     </div>
   ) : (
     <ProductList products={productsFiltred} />
@@ -135,23 +140,26 @@ export const ProductSearch = () => {
 
 export default function ProductList({ products }) {
   return (
-    <div className="products flex">
-      <div className="products-container flex">
-        {products.map(({ title, price, info, weight, image, id }, index) => {
-          return (
-            <ProductCard
-              title={title}
-              price={price}
-              info={info}
-              weight={weight}
-              image={image}
-              id={id}
-              products={products}
-              key={index}
-            />
-          );
-        })}
+    <>
+      <div className="products flex">
+        <div className="products-container flex">
+          {products.map(({ title, price, info, weight, image, id }, index) => {
+            return (
+              <ProductCard
+                title={title}
+                price={price}
+                info={info}
+                weight={weight}
+                image={image}
+                id={id}
+                products={products}
+                key={index}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
