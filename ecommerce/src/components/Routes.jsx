@@ -9,11 +9,8 @@ export default function AppRoutes() {
     <Router>
       <DefalutTemplate>
         <Routes>
-          <Route
-            path="/cadastro"
-            element={ <Cadastro /> }
-          />
           <Route path="/" element={<App />} />
+          <Route path="/cadastro" element={ <Cadastro /> } />
           <Route path='/edit-product/:id' element={<ProductEdit />}  />
           <Route path='/search/:search' element={<ProductSearch />} />
           <Route path='/view/:id' element={<ProductView />} />

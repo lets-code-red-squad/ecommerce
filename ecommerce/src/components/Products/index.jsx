@@ -6,7 +6,7 @@ import './ProductCard.css';
 import './ProductList.css';
 import './ProductView.css';
 
-export function ProductCard({ title, price, info, weight, image, id, products }) {
+export function ProductCard({ title, image, id, products }) {
   const navigate = useNavigate();
 
 

@@ -19,7 +19,6 @@
 }
 
 .right-view {
-  /* background-color: aqua; */
   flex-direction: column;
   justify-content: space-between;
   width: 500px;
@@ -28,7 +27,6 @@
 
 .info-view {
   height: 210px;
-  /* background-color: aqua; */
 }
 
 .btn-back {

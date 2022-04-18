@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useProdutos } from "../../contexts/Products";
-import ProductList, { ProductSearch } from "../Products";
+import ProductList from "../Products";
 import './style.css';
 
 export const BtnSave = ({ disabled, id }) => {
