@@ -18,6 +18,7 @@ header {
   width: 30%;
   justify-content: center;
   align-items: center;
+  overflow-y: hidden;
 }
 
 .link-header {

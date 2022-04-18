@@ -25,14 +25,13 @@
   height: 355px;
 }
 
-.image-container {
-  display: flex;
+.image-card {
   align-items: center;
   height: 68.57%;
   width: 70.58%;
 }
 
-.image-container img {
+.image-card img {
   width: 91.67%;
   height: 91.67%;
   border: 3px inset #5c3232;

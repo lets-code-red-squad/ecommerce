@@ -22,7 +22,7 @@ const data = [
   },
   {
     image: '  https://images.kabum.com.br/produtos/fotos/266992/ifood-digital-g-brazil-_1636597587_gg.jpg',
-    title: 'Gift Card iFood-R$50,00 AAA BBB CCC DDD EEE FFF GGG HHH III',
+    title: 'Gift Card iFood - R$50,00 ',
     price: 45,
     info: 'O iFood Card é um cartão presente que dá a liberdade do comprador ou presenteado escolher as delícias que mais gosta no nosso aplicativo',
     weight: 0,
@@ -34,7 +34,6 @@ const data = [
     info: 'Conta Mestre - 238 Skins - Todos Campeões Liberados',
     weight: 0,
   },
-  
 ];
 
 data.forEach((element) => element['id'] = element.title.toLowerCase().split(' ').join('-'))

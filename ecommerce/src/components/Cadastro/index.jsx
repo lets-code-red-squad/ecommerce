@@ -24,7 +24,7 @@ export default function Cadastro({
 
   useEffect(() => {
     const minCharacter = 5;
-    const maxCharacter = 25;
+    const maxCharacter = 35;
 
     const errors = [
       getTitle.length < minCharacter || getTitle.length > maxCharacter,
@@ -105,8 +105,8 @@ export default function Cadastro({
         <div className="image-container">
           {
             getImage !== image
-              ? <img src={URL.createObjectURL(getImage)} alt='Imagem' />
-              : <img src={image} alt='Imagem' />
+              ? <img src={URL.createObjectURL(getImage)} alt='Imagem' className="image-cadastro" />
+              : <img src={image} alt='Imagem' className="image-cadastro" />
           }
           <Input
             name='image'
@@ -121,8 +121,9 @@ export default function Cadastro({
 
       <div>
         <BtnSave disabled={buttonDisabled} />
-        <BtnCancel />
+        <BtnCancel name='Cancelar' />
       </div>
     </form>
+    
   );
 }

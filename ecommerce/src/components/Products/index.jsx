@@ -1,27 +1,22 @@
 import Cadastro from "../Cadastro";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useProdutos } from "../../contexts/Products";
-import { BtnDelete, BtnEdit } from "../Buttons";
+import { BtnCancel, BtnDelete, BtnEdit } from "../Buttons";
 import './ProductCard.css';
 import './ProductList.css';
+import './ProductView.css';
 
 export function ProductCard({ title, price, info, weight, image, id, products }) {
-  const priceFormated = (Number(price)).toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    style: 'currency',
-    currency: 'BRL'
-  });
+  const navigate = useNavigate();
 
-  const weightFormated = (Number(weight).toLocaleString('pt-BR', {
-    style: 'unit',
-    unit: 'kilogram',
-  }));
 
   return (
     <div className="product-card-container flex">
-      <div className="product-card flex" id={id} onClick={() => console.log(`item ${id} vizualizado!`)} >
-        <div className="product-info flex">
-          <div className="image-container">
+      <div className="product-card flex" id={id} >
+        <div className="product-info flex" onClick={() => {
+          navigate(`/view/${id}`, { replace: true });
+        }}>
+          <div className="image-card flex">
             <img src={image} alt={title} className="image" />
           </div>
           <div className="title-container flex">
@@ -42,9 +37,44 @@ export const ProductView = () => {
   const { id } = useParams();
   const { title, price, info, weight, image } = products.find((element) => element.id === id);
 
+  const priceFormated = (Number(price)).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+    style: 'currency',
+    currency: 'BRL'
+  });
+
+  const weightFormated = (Number(weight).toLocaleString('pt-BR', {
+    style: 'unit',
+    unit: 'kilogram',
+  }));
+
   return (
-    <div>
-      <h1>{title}</h1>
+    <div className="product-view flex">
+      <div className="title-view">
+        <h1>{title}</h1>
+      </div>
+      <div className="flex">
+        <div className="left-view">
+          <img src={image} alt={title} className='image-view' />
+        </div>
+        <div className="right-view flex">
+          <div>
+            <h3>Preço:</h3>
+            <p>{priceFormated}</p>
+          </div>
+          <div>
+            <h3>Informações/Descrição:</h3>
+            <p className="info-view">{info}</p>
+          </div>
+          <div>
+            <h3>Peso:</h3>
+            <p>{weightFormated}</p>
+          </div>
+        </div>
+      </div>
+      <div className="btn-back">
+        <BtnCancel name='Voltar' />
+      </div>
     </div>
   )
 }
@@ -69,7 +99,7 @@ export const ProductEdit = () => {
 export const ProductSearch = () => {
   const [products] = useProdutos();
   const { search } = useParams();
-  const allWordsSearch = search.split(' ').toLowerCase();
+  const allWordsSearch = search.toLowerCase().split(' ');
   const productsFiltred = products.filter((element) => allWordsSearch.some((word) =>
     element.title.toLowerCase().split(' ').includes(word))
   );

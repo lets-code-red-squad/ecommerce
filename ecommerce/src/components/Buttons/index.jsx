@@ -61,10 +61,10 @@ export const BtnDelete = ({ id, products }) => {
   );
 };
 
-export const BtnCancel = () => {
+export const BtnCancel = ({ name }) => {
   return (
     <Link to="/">
-      <button className="buttons">Cancelar</button>
+      <button className="buttons">{name}</button>
     </Link>
   );
 };

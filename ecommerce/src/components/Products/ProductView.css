@@ -1,0 +1,36 @@
+.product-view {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 82vh;
+}
+
+.title-view {
+  margin-bottom: 20px;
+}
+
+.left-view {
+  padding-right: 20px;
+}
+
+.left-view .image-view {
+  width: 350px;
+  height: 350px;
+}
+
+.right-view {
+  /* background-color: aqua; */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  height: 350px;
+}
+
+.info-view {
+  height: 210px;
+  /* background-color: aqua; */
+}
+
+.btn-back {
+  margin-top: 20px;
+}

@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.cadastro-container img {
+.cadastro-container .image-cadastro {
   width: 350px;
   height: 350px;
   border: 2px solid rgb(82, 82, 82);
