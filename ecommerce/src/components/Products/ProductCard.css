@@ -41,6 +41,8 @@
 }
 
 .title-container {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   text-align: center;
   align-items: center;
@@ -68,4 +70,10 @@
   height: 35px;
   margin: 0 auto;
   z-index: 1000;
+}
+.title{
+  color: #250000;
+}
+.price{
+    color: #db0606;
 }

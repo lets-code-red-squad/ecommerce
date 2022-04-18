@@ -16,10 +16,10 @@ header {
 
 .nav-bar-header {
   display: flex;
-  width: auto;
-  justify-content: center;
+  width: 30vw;
+  justify-content: space-around;
   align-items: center;
-  padding-inline: 5px;
+  grid-gap: 1vw;
 }
 
 .link-header {
@@ -50,7 +50,7 @@ header {
   width: 300px;
   margin: 0;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1045px) {
   header {
     flex-wrap: wrap;
     justify-content: space-around;
