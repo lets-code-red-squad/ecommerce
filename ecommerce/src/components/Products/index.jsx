@@ -57,34 +57,36 @@ export const ProductView = () => {
 
   return (
     <div className="product-view flex">
-      <div className="title-view">
-        <h1>{title}</h1>
-      </div>
-      <div className="flex">
-        <div className="left-view">
-          <img src={image} alt={title} className="image-view" />
+      <div className="product-view-container flex">
+        <div className="title-view">
+          <h1>{title}</h1>
         </div>
-        <div className="right-view flex">
-          <div>
-            <h3>Preço:</h3>
-            <p>{priceFormated}</p>
+        <div className="flex">
+          <div className="left-view">
+            <img src={image} alt={title} className="image-view" />
           </div>
-          <div>
-            <h3>Informações/Descrição:</h3>
-            <div className="info-view">
-              {info.split("\n").map((paragraph) => (
-                <p>{paragraph}</p>
-              ))}
+          <div className="right-view flex">
+            <div>
+              <h3>Preço:</h3>
+              <p>{priceFormated}</p>
+            </div>
+            <div>
+              <h3>Informações/Descrição:</h3>
+              <div className="info-view">
+                {info.split("\n").map((paragraph) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3>Peso:</h3>
+              <p>{weightFormated}</p>
             </div>
           </div>
-          <div>
-            <h3>Peso:</h3>
-            <p>{weightFormated}</p>
-          </div>
         </div>
-      </div>
-      <div className="btn-back">
-        <BtnCancel name="Voltar" />
+        <div className="btn-back">
+          <BtnCancel name="Voltar" />
+        </div>
       </div>
     </div>
   );
