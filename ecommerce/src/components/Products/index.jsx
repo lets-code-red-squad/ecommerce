@@ -38,7 +38,6 @@ export function ProductCard({ title, image, id, products }) {
 export const ProductView = () => {
   const [products] = useProdutos();
   const { id } = useParams();
-  console.log(products, id);
   const { title, price, info, weight, image } = products.find(
     (element) => element.id === id
   );
@@ -53,7 +52,6 @@ export const ProductView = () => {
     style: "unit",
     unit: "kilogram"
   });
-
 
   return (
     <>
@@ -75,7 +73,7 @@ export const ProductView = () => {
                 <h3>Informações/Descrição:</h3>
                 <div className="info-view">
                   {info.split("\n").map((paragraph) => (
-                    <p>{paragraph}</p>
+                    <p>{paragraph}<br /></p>
                   ))}
                 </div>
               </div>

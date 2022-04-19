@@ -3,13 +3,12 @@ import { useProdutos } from "../../contexts/Products";
 import ProductList from "../Products";
 import './style.css';
 
-export const BtnSave = ({ disabled, id }) => {
+export const BtnSave = ({ disabled }) => {
   return (
     <button
       type="submit"
       className="buttons"
       disabled={disabled}
-      form={id}
     >
       Salvar
     </button>
